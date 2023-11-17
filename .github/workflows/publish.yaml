@@ -1,0 +1,45 @@
+name: "Publish on pub.dev"
+
+on:
+  workflow_call:
+    secrets:
+      access-token:
+        required: true
+      refresh-token:
+        required: true
+      id-token:
+        required: true
+
+jobs:
+  publish:
+    name: "Publish"
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checkout Repository"
+        uses: actions/checkout@v4.1.1
+
+      - name: "Setup Dart SDK"
+        if: success()
+        uses: dart-lang/setup-dart@v1.6.0
+        with:
+          sdk: stable
+
+      - name: "Setup Credentials"
+        if: success()
+        run: | 
+          mkdir -p ~/.pub-cache 
+          cat <<EOF > ~/.pub-cache/credentials.json
+          {
+            "accessToken":"${{ secrets.access-token }}",
+            "refreshToken":"${{ secrets.refresh-token }}",
+            "idToken":"${{ secrets.id-token }}",
+            "tokenEndpoint":"https://accounts.google.com/o/oauth2/token",
+            "scopes": [ "openid", "https://www.googleapis.com/auth/userinfo.email" ],
+            "expiration": 1700251089030
+          }
+          EOF
+
+      - name: "Publish package"
+        if: success()
+        run: pub publish -f

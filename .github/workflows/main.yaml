@@ -1,0 +1,30 @@
+name: "Release"
+
+on:
+  workflow_dispatch:
+  push:
+    branches: 
+      - "main"
+
+jobs:
+  analyzer:
+    name: "Analyzer"
+    uses: ./.github/workflows/analyzer.yaml
+
+  tests:
+    name: "Tests"
+    uses: ./.github/workflows/tests.yaml
+
+  version:
+    name: "Version"
+    needs: [ analyzer, tests ]
+    uses: ./.github/workflows/version.yaml
+
+  publish:
+    name: "Publish"
+    needs: [ version ]
+    uses: ./.github/workflows/publish.yaml
+    secrets:
+      access-token: ${{ secrets.PUBDEV_OAUTH_ACCESS_TOKEN }}
+      refresh-token: ${{ secrets.PUBDEV_OAUTH_REFRESH_TOKEN }}
+      id-token: ${{ secrets.PUBDEV_OAUTH_REFRESH_TOKEN }}
