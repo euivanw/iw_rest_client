@@ -20,11 +20,3 @@ jobs:
     needs: [ analyzer, tests ]
     uses: ./.github/workflows/version.yaml
 
-  publish:
-    name: "Publish"
-    needs: [ version ]
-    uses: ./.github/workflows/publish.yaml
-    secrets:
-      access-token: ${{ secrets.PUBDEV_OAUTH_ACCESS_TOKEN }}
-      refresh-token: ${{ secrets.PUBDEV_OAUTH_REFRESH_TOKEN }}
-      id-token: ${{ secrets.PUBDEV_OAUTH_REFRESH_TOKEN }}
