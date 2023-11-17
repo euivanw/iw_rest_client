@@ -31,4 +31,4 @@ jobs:
         if: success()
         run: |
           derry update || false
-          derry test || false
+          derry tests || false
