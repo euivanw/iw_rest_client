@@ -42,4 +42,4 @@ jobs:
 
       - name: "Publish package"
         if: success()
-        run: pub publish -f
+        run: dart pub publish -f
