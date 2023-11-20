@@ -1,9 +1,9 @@
 name: iw_rest_client
 description: Uma biblioteca que encapsula bibliotecas de cliente HTTP.
-version: 1.0.1
+version: 1.0.2
 repository: https://github.com/euivanw/iw_rest_client
 
-topics: 
+topics:
   - http
   - rest
 
