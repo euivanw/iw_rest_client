@@ -1,8 +1,16 @@
-## Features
+# iw_rest_client
 
-This package allows you to encapsulate HTTP clients in your application.
+This project is an implementation that allow developers to encapsulate their own usage of a http client.
+
+The main objective of this project is to create a package that provide http client encapsulated and by doing this allow developers to use it in many apps rather than create their own encapsulation for each project.
+
+For now, the package supports only Dart http client, however, other clients could be supported in the future, por instance, the Dio http client.
 
 ## Usage
+
+Here is an example that make some requests using the supported http method and also the way to handle rest exceptions.
+
+You can also read the unit tests to see all the possibilities that the implementation supports.
 
 ```dart
 try {
@@ -101,3 +109,6 @@ try {
     exit(2);
   }
 ```
+Feito com &hearts; por Ivan Wilhelm.
+
+Codificado no [Visual Studio Code](https://code.visualstudio.com) da [Microsoft](https://www.microsoft.com.br)

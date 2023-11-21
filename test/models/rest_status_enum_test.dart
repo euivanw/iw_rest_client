@@ -6,6 +6,7 @@ void main() {
     final int mockContinue = 100;
     final int mockSwitchingProtocols = 101;
     final int mockProcessing = 102;
+    final int mockEarlyHints = 103;
     final int mockOk = 200;
     final int mockCreated = 201;
     final int mockAccepted = 202;
@@ -22,6 +23,7 @@ void main() {
     final int mockSeeOther = 303;
     final int mockNotModified = 304;
     final int mockUseProxy = 305;
+    final int mockUnused = 306;
     final int mockTemporaryRedirect = 307;
     final int mockPermanentRedirect = 308;
     final int mockBadRequest = 400;
@@ -42,10 +44,12 @@ void main() {
     final int mockUnsupportedMediaType = 415;
     final int mockRequestedRangeNotSatisfiable = 416;
     final int mockExpectationFailed = 417;
+    final int mockImATeapot = 418;
     final int mockMisdirectedRequest = 421;
     final int mockUnprocessableEntity = 422;
     final int mockLocked = 423;
     final int mockFailedDependency = 424;
+    final int mockTooEarly = 425;
     final int mockUpgradeRequired = 426;
     final int mockPreconditionRequired = 428;
     final int mockTooManyRequests = 429;
@@ -91,6 +95,14 @@ void main() {
         expect(status.value, equals(mockProcessing));
       });
 
+      test('Should return 103 when RestStatus is earlyHints.', () {
+        // Act
+        final RestStatus status = RestStatus.earlyHints;
+
+        // Asserts
+        expect(status.value, equals(mockEarlyHints));
+      });
+
       test('Should return 200 when RestStatus is ok.', () {
         // Act
         final RestStatus status = RestStatus.ok;
@@ -115,13 +127,16 @@ void main() {
         expect(status.value, equals(mockAccepted));
       });
 
-      test('Should return 203 when RestStatus is nonAuthoritativeInformation.', () {
-        // Act
-        final RestStatus status = RestStatus.nonAuthoritativeInformation;
+      test(
+        'Should return 203 when RestStatus is nonAuthoritativeInformation.',
+        () {
+          // Act
+          final RestStatus status = RestStatus.nonAuthoritativeInformation;
 
-        // Asserts
-        expect(status.value, equals(mockNonAuthoritativeInformation));
-      });
+          // Asserts
+          expect(status.value, equals(mockNonAuthoritativeInformation));
+        },
+      );
 
       test('Should return 204 when RestStatus is noContent.', () {
         // Act
@@ -219,6 +234,14 @@ void main() {
         expect(status.value, equals(mockUseProxy));
       });
 
+      test('Should return 306 when RestStatus is unused.', () {
+        // Act
+        final RestStatus status = RestStatus.unused;
+
+        // Asserts
+        expect(status.value, equals(mockUnused));
+      });
+
       test('Should return 307 when RestStatus is temporaryRedirect.', () {
         // Act
         final RestStatus status = RestStatus.temporaryRedirect;
@@ -291,13 +314,16 @@ void main() {
         expect(status.value, equals(mockNotAcceptable));
       });
 
-      test('Should return 407 when RestStatus is proxyAuthenticationRequired.', () {
-        // Act
-        final RestStatus status = RestStatus.proxyAuthenticationRequired;
+      test(
+        'Should return 407 when RestStatus is proxyAuthenticationRequired.',
+        () {
+          // Act
+          final RestStatus status = RestStatus.proxyAuthenticationRequired;
 
-        // Asserts
-        expect(status.value, equals(mockProxyAuthenticationRequired));
-      });
+          // Asserts
+          expect(status.value, equals(mockProxyAuthenticationRequired));
+        },
+      );
 
       test('Should return 408 when RestStatus is requestTimeout.', () {
         // Act
@@ -363,13 +389,16 @@ void main() {
         expect(status.value, equals(mockUnsupportedMediaType));
       });
 
-      test('Should return 416 when RestStatus is requestedRangeNotSatisfiable.', () {
-        // Act
-        final RestStatus status = RestStatus.requestedRangeNotSatisfiable;
+      test(
+        'Should return 416 when RestStatus is requestedRangeNotSatisfiable.',
+        () {
+          // Act
+          final RestStatus status = RestStatus.requestedRangeNotSatisfiable;
 
-        // Asserts
-        expect(status.value, equals(mockRequestedRangeNotSatisfiable));
-      });
+          // Asserts
+          expect(status.value, equals(mockRequestedRangeNotSatisfiable));
+        },
+      );
 
       test('Should return 417 when RestStatus is expectationFailed.', () {
         // Act
@@ -377,6 +406,14 @@ void main() {
 
         // Asserts
         expect(status.value, equals(mockExpectationFailed));
+      });
+
+      test('Should return 418 when RestStatus is imATeapot.', () {
+        // Act
+        final RestStatus status = RestStatus.imATeapot;
+
+        // Asserts
+        expect(status.value, equals(mockImATeapot));
       });
 
       test('Should return 421 when RestStatus is misdirectedRequest.', () {
@@ -411,6 +448,14 @@ void main() {
         expect(status.value, equals(mockFailedDependency));
       });
 
+      test('Should return 425 when RestStatus is tooEarly.', () {
+        // Act
+        final RestStatus status = RestStatus.tooEarly;
+
+        // Asserts
+        expect(status.value, equals(mockTooEarly));
+      });
+
       test('Should return 426 when RestStatus is upgradeRequired.', () {
         // Act
         final RestStatus status = RestStatus.upgradeRequired;
@@ -435,29 +480,38 @@ void main() {
         expect(status.value, equals(mockTooManyRequests));
       });
 
-      test('Should return 431 when RestStatus is requestHeaderFieldsTooLarge.', () {
-        // Act
-        final RestStatus status = RestStatus.requestHeaderFieldsTooLarge;
+      test(
+        'Should return 431 when RestStatus is requestHeaderFieldsTooLarge.',
+        () {
+          // Act
+          final RestStatus status = RestStatus.requestHeaderFieldsTooLarge;
 
-        // Asserts
-        expect(status.value, equals(mockRequestHeaderFieldsTooLarge));
-      });
+          // Asserts
+          expect(status.value, equals(mockRequestHeaderFieldsTooLarge));
+        },
+      );
 
-      test('Should return 444 when RestStatus is connectionClosedWithoutResponse.', () {
-        // Act
-        final RestStatus status = RestStatus.connectionClosedWithoutResponse;
+      test(
+        'Should return 444 when RestStatus is connectionClosedWithoutResponse.',
+        () {
+          // Act
+          final RestStatus status = RestStatus.connectionClosedWithoutResponse;
 
-        // Asserts
-        expect(status.value, equals(mockConnectionClosedWithoutResponse));
-      });
+          // Asserts
+          expect(status.value, equals(mockConnectionClosedWithoutResponse));
+        },
+      );
 
-      test('Should return 451 when RestStatus is unavailableForLegalReasons.', () {
-        // Act
-        final RestStatus status = RestStatus.unavailableForLegalReasons;
+      test(
+        'Should return 451 when RestStatus is unavailableForLegalReasons.',
+        () {
+          // Act
+          final RestStatus status = RestStatus.unavailableForLegalReasons;
 
-        // Asserts
-        expect(status.value, equals(mockUnavailableForLegalReasons));
-      });
+          // Asserts
+          expect(status.value, equals(mockUnavailableForLegalReasons));
+        },
+      );
 
       test('Should return 499 when RestStatus is clientClosedRequest.', () {
         // Act
@@ -547,21 +601,27 @@ void main() {
         expect(status.value, equals(mockNotExtended));
       });
 
-      test('Should return 511 when RestStatus is networkAuthenticationRequired.', () {
-        // Act
-        final RestStatus status = RestStatus.networkAuthenticationRequired;
+      test(
+        'Should return 511 when RestStatus is networkAuthenticationRequired.',
+        () {
+          // Act
+          final RestStatus status = RestStatus.networkAuthenticationRequired;
 
-        // Asserts
-        expect(status.value, equals(mockNetworkAuthenticationRequired));
-      });
+          // Asserts
+          expect(status.value, equals(mockNetworkAuthenticationRequired));
+        },
+      );
 
-      test('Should return 599 when RestStatus is networkConnectTimeoutError.', () {
-        // Act
-        final RestStatus status = RestStatus.networkConnectTimeoutError;
+      test(
+        'Should return 599 when RestStatus is networkConnectTimeoutError.',
+        () {
+          // Act
+          final RestStatus status = RestStatus.networkConnectTimeoutError;
 
-        // Asserts
-        expect(status.value, equals(mockNetworkConnectTimeoutError));
-      });
+          // Asserts
+          expect(status.value, equals(mockNetworkConnectTimeoutError));
+        },
+      );
     });
 
     group('fromValue', () {
@@ -590,14 +650,18 @@ void main() {
         expect(status, equals(RestStatus.continue_));
       });
 
-      test('Should return switchingProtocols RestStatus when value is 101.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockSwitchingProtocols);
+      test(
+        'Should return switchingProtocols RestStatus when value is 101.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockSwitchingProtocols);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.switchingProtocols));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.switchingProtocols));
+        },
+      );
 
       test('Should return processing RestStatus when value is 102.', () {
         // Act
@@ -606,6 +670,15 @@ void main() {
         // Asserts
         expect(status, isNotNull);
         expect(status, equals(RestStatus.processing));
+      });
+
+      test('Should return earlyHints RestStatus when value is 103.', () {
+        // Act
+        final RestStatus? status = RestStatus.fromValue(mockEarlyHints);
+
+        // Asserts
+        expect(status, isNotNull);
+        expect(status, equals(RestStatus.earlyHints));
       });
 
       test('Should return ok RestStatus when value is 200.', () {
@@ -635,14 +708,18 @@ void main() {
         expect(status, equals(RestStatus.accepted));
       });
 
-      test('Should return nonAuthoritativeInformation RestStatus when value is 203.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockNonAuthoritativeInformation);
+      test(
+        'Should return nonAuthoritativeInformation RestStatus when value is 203.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockNonAuthoritativeInformation);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.nonAuthoritativeInformation));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.nonAuthoritativeInformation));
+        },
+      );
 
       test('Should return noContent RestStatus when value is 204.', () {
         // Act
@@ -752,6 +829,15 @@ void main() {
         expect(status, equals(RestStatus.useProxy));
       });
 
+      test('Should return unused RestStatus when value is 306.', () {
+        // Act
+        final RestStatus? status = RestStatus.fromValue(mockUnused);
+
+        // Asserts
+        expect(status, isNotNull);
+        expect(status, equals(RestStatus.unused));
+      });
+
       test('Should return temporaryRedirect RestStatus when value is 307.', () {
         // Act
         final RestStatus? status = RestStatus.fromValue(mockTemporaryRedirect);
@@ -833,14 +919,18 @@ void main() {
         expect(status, equals(RestStatus.notAcceptable));
       });
 
-      test('Should return proxyAuthenticationRequired RestStatus when value is 407.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockProxyAuthenticationRequired);
+      test(
+        'Should return proxyAuthenticationRequired RestStatus when value is 407.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockProxyAuthenticationRequired);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.proxyAuthenticationRequired));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.proxyAuthenticationRequired));
+        },
+      );
 
       test('Should return requestTimeout RestStatus when value is 408.', () {
         // Act
@@ -878,23 +968,31 @@ void main() {
         expect(status, equals(RestStatus.lengthRequired));
       });
 
-      test('Should return preconditionFailed RestStatus when value is 412.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockPreconditionFailed);
+      test(
+        'Should return preconditionFailed RestStatus when value is 412.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockPreconditionFailed);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.preconditionFailed));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.preconditionFailed));
+        },
+      );
 
-      test('Should return requestEntityTooLarge RestStatus when value is 413.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockRequestEntityTooLarge);
+      test(
+        'Should return requestEntityTooLarge RestStatus when value is 413.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockRequestEntityTooLarge);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.requestEntityTooLarge));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.requestEntityTooLarge));
+        },
+      );
 
       test('Should return requestUriTooLong RestStatus when value is 414.', () {
         // Act
@@ -905,23 +1003,31 @@ void main() {
         expect(status, equals(RestStatus.requestUriTooLong));
       });
 
-      test('Should return unsupportedMediaType RestStatus when value is 415.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockUnsupportedMediaType);
+      test(
+        'Should return unsupportedMediaType RestStatus when value is 415.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockUnsupportedMediaType);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.unsupportedMediaType));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.unsupportedMediaType));
+        },
+      );
 
-      test('Should return requestedRangeNotSatisfiable RestStatus when value is 416.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockRequestedRangeNotSatisfiable);
+      test(
+        'Should return requestedRangeNotSatisfiable RestStatus when value is 416.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockRequestedRangeNotSatisfiable);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.requestedRangeNotSatisfiable));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.requestedRangeNotSatisfiable));
+        },
+      );
 
       test('Should return expectationFailed RestStatus when value is 417.', () {
         // Act
@@ -932,23 +1038,40 @@ void main() {
         expect(status, equals(RestStatus.expectationFailed));
       });
 
-      test('Should return misdirectedRequest RestStatus when value is 421.', () {
+      test('Should return imATeapot RestStatus when value is 418.', () {
         // Act
-        final RestStatus? status = RestStatus.fromValue(mockMisdirectedRequest);
+        final RestStatus? status = RestStatus.fromValue(mockImATeapot);
 
         // Asserts
         expect(status, isNotNull);
-        expect(status, equals(RestStatus.misdirectedRequest));
+        expect(status, equals(RestStatus.imATeapot));
       });
 
-      test('Should return unprocessableEntity RestStatus when value is 422.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockUnprocessableEntity);
+      test(
+        'Should return misdirectedRequest RestStatus when value is 421.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockMisdirectedRequest);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.unprocessableEntity));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.misdirectedRequest));
+        },
+      );
+
+      test(
+        'Should return unprocessableEntity RestStatus when value is 422.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockUnprocessableEntity);
+
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.unprocessableEntity));
+        },
+      );
 
       test('Should return locked RestStatus when value is 423.', () {
         // Act
@@ -968,6 +1091,15 @@ void main() {
         expect(status, equals(RestStatus.failedDependency));
       });
 
+      test('Should return tooEarly RestStatus when value is 425.', () {
+        // Act
+        final RestStatus? status = RestStatus.fromValue(mockTooEarly);
+
+        // Asserts
+        expect(status, isNotNull);
+        expect(status, equals(RestStatus.tooEarly));
+      });
+
       test('Should return upgradeRequired RestStatus when value is 426.', () {
         // Act
         final RestStatus? status = RestStatus.fromValue(mockUpgradeRequired);
@@ -977,14 +1109,18 @@ void main() {
         expect(status, equals(RestStatus.upgradeRequired));
       });
 
-      test('Should return preconditionRequired RestStatus when value is 428.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockPreconditionRequired);
+      test(
+        'Should return preconditionRequired RestStatus when value is 428.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockPreconditionRequired);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.preconditionRequired));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.preconditionRequired));
+        },
+      );
 
       test('Should return tooManyRequests RestStatus when value is 429.', () {
         // Act
@@ -995,50 +1131,70 @@ void main() {
         expect(status, equals(RestStatus.tooManyRequests));
       });
 
-      test('Should return requestHeaderFieldsTooLarge RestStatus when value is 431.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockRequestHeaderFieldsTooLarge);
+      test(
+        'Should return requestHeaderFieldsTooLarge RestStatus when value is 431.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockRequestHeaderFieldsTooLarge);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.requestHeaderFieldsTooLarge));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.requestHeaderFieldsTooLarge));
+        },
+      );
 
-      test('Should return connectionClosedWithoutResponse RestStatus when value is 444.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockConnectionClosedWithoutResponse);
+      test(
+        'Should return connectionClosedWithoutResponse RestStatus when value is 444.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockConnectionClosedWithoutResponse);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.connectionClosedWithoutResponse));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.connectionClosedWithoutResponse));
+        },
+      );
 
-      test('Should return unavailableForLegalReasons RestStatus when value is 451.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockUnavailableForLegalReasons);
+      test(
+        'Should return unavailableForLegalReasons RestStatus when value is 451.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockUnavailableForLegalReasons);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.unavailableForLegalReasons));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.unavailableForLegalReasons));
+        },
+      );
 
-      test('Should return clientClosedRequest RestStatus when value is 499.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockClientClosedRequest);
+      test(
+        'Should return clientClosedRequest RestStatus when value is 499.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockClientClosedRequest);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.clientClosedRequest));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.clientClosedRequest));
+        },
+      );
 
-      test('Should return internalServerError RestStatus when value is 500.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockInternalServerError);
+      test(
+        'Should return internalServerError RestStatus when value is 500.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockInternalServerError);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.internalServerError));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.internalServerError));
+        },
+      );
 
       test('Should return notImplemented RestStatus when value is 501.', () {
         // Act
@@ -1058,14 +1214,18 @@ void main() {
         expect(status, equals(RestStatus.badGateway));
       });
 
-      test('Should return serviceUnavailable RestStatus when value is 503.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockServiceUnavailable);
+      test(
+        'Should return serviceUnavailable RestStatus when value is 503.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockServiceUnavailable);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.serviceUnavailable));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.serviceUnavailable));
+        },
+      );
 
       test('Should return gatewayTimeout RestStatus when value is 504.', () {
         // Act
@@ -1076,32 +1236,44 @@ void main() {
         expect(status, equals(RestStatus.gatewayTimeout));
       });
 
-      test('Should return httpVersionNotSupported RestStatus when value is 505.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockHttpVersionNotSupported);
+      test(
+        'Should return httpVersionNotSupported RestStatus when value is 505.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockHttpVersionNotSupported);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.httpVersionNotSupported));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.httpVersionNotSupported));
+        },
+      );
 
-      test('Should return variantAlsoNegotiates RestStatus when value is 506.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockVariantAlsoNegotiates);
+      test(
+        'Should return variantAlsoNegotiates RestStatus when value is 506.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockVariantAlsoNegotiates);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.variantAlsoNegotiates));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.variantAlsoNegotiates));
+        },
+      );
 
-      test('Should return insufficientStorage RestStatus when value is 507.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockInsufficientStorage);
+      test(
+        'Should return insufficientStorage RestStatus when value is 507.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockInsufficientStorage);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.insufficientStorage));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.insufficientStorage));
+        },
+      );
 
       test('Should return loopDetected RestStatus when value is 508.', () {
         // Act
@@ -1121,23 +1293,31 @@ void main() {
         expect(status, equals(RestStatus.notExtended));
       });
 
-      test('Should return networkAuthenticationRequired RestStatus when value is 511.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockNetworkAuthenticationRequired);
+      test(
+        'Should return networkAuthenticationRequired RestStatus when value is 511.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockNetworkAuthenticationRequired);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.networkAuthenticationRequired));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.networkAuthenticationRequired));
+        },
+      );
 
-      test('Should return networkConnectTimeoutError RestStatus when value is 599.', () {
-        // Act
-        final RestStatus? status = RestStatus.fromValue(mockNetworkConnectTimeoutError);
+      test(
+        'Should return networkConnectTimeoutError RestStatus when value is 599.',
+        () {
+          // Act
+          final RestStatus? status =
+              RestStatus.fromValue(mockNetworkConnectTimeoutError);
 
-        // Asserts
-        expect(status, isNotNull);
-        expect(status, equals(RestStatus.networkConnectTimeoutError));
-      });
+          // Asserts
+          expect(status, isNotNull);
+          expect(status, equals(RestStatus.networkConnectTimeoutError));
+        },
+      );
     });
   });
 }

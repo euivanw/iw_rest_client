@@ -85,71 +85,80 @@ void main() {
       expect(uri1 == uri2, isFalse);
     });
 
-    test('Should return the string representantion of a RestUri object when toString() method is called.', () {
-      // Arrange
-      final RestUri uri = RestUri(
-        scheme: RestScheme.https,
-        host: 'ivanwilhelm.dev',
-        path: '/posts',
-        queryParameters: {
-          'code': '1',
-        },
-      );
+    test(
+      'Should return the string representantion of a RestUri object when toString() method is called.',
+      () {
+        // Arrange
+        final RestUri uri = RestUri(
+          scheme: RestScheme.https,
+          host: 'ivanwilhelm.dev',
+          path: '/posts',
+          queryParameters: {
+            'code': '1',
+          },
+        );
 
-      // Act
-      final String uriString = uri.toString();
+        // Act
+        final String uriString = uri.toString();
 
-      // Asserts
-      expect(
-        uriString,
-        equals(
-          'RestUri{scheme: RestScheme.https, host: ivanwilhelm.dev, path: /posts, queryParameters: {code: 1}}',
-        ),
-      );
-    });
+        // Asserts
+        expect(
+          uriString,
+          equals(
+            'RestUri{scheme: RestScheme.https, host: ivanwilhelm.dev, path: /posts, queryParameters: {code: 1}}',
+          ),
+        );
+      },
+    );
 
-    test('Should return two equals hashcode when two RestUri objets are equals.', () {
-      // Arrange
-      final RestUri uri1 = RestUri(
-        scheme: RestScheme.https,
-        host: 'ivanwilhelm.dev',
-        path: '/',
-      );
+    test(
+      'Should return two equals hashcode when two RestUri objets are equals.',
+      () {
+        // Arrange
+        final RestUri uri1 = RestUri(
+          scheme: RestScheme.https,
+          host: 'ivanwilhelm.dev',
+          path: '/',
+        );
 
-      final RestUri uri2 = RestUri(
-        scheme: RestScheme.https,
-        host: 'ivanwilhelm.dev',
-        path: '/',
-      );
+        final RestUri uri2 = RestUri(
+          scheme: RestScheme.https,
+          host: 'ivanwilhelm.dev',
+          path: '/',
+        );
 
-      // Act
-      final int hashCodeUri1 = uri1.hashCode;
-      final int hashCodeUri2 = uri2.hashCode;
+        // Act
+        final int hashCodeUri1 = uri1.hashCode;
+        final int hashCodeUri2 = uri2.hashCode;
 
-      // Asserts
-      expect(hashCodeUri1 == hashCodeUri2, isTrue);
-    });
+        // Asserts
+        expect(hashCodeUri1 == hashCodeUri2, isTrue);
+      },
+    );
 
-    test('Should return two different hashcode when two RestUri objets are different.', () {
-      // Arrange
-      final RestUri uri1 = RestUri(
-        scheme: RestScheme.https,
-        host: 'ivanwilhelm.dev',
-        path: '/',
-      );
+    test(
+      'Should return two different hashcode when two RestUri objets are different.',
+      () {
+        // Arrange
+        final RestUri uri1 = RestUri(
+          scheme: RestScheme.https,
+          host: 'ivanwilhelm.dev',
+          path: '/',
+        );
 
-      final RestUri uri2 = RestUri(
-        scheme: RestScheme.https,
-        host: 'ivanwilhelm.dev',
-        path: '/v1/users',
-      );
+        final RestUri uri2 = RestUri(
+          scheme: RestScheme.https,
+          host: 'ivanwilhelm.dev',
+          path: '/v1/users',
+        );
 
-      // Act
-      final int hashCodeUri1 = uri1.hashCode;
-      final int hashCodeUri2 = uri2.hashCode;
+        // Act
+        final int hashCodeUri1 = uri1.hashCode;
+        final int hashCodeUri2 = uri2.hashCode;
 
-      // Asserts
-      expect(hashCodeUri1 != hashCodeUri2, isTrue);
-    });
+        // Asserts
+        expect(hashCodeUri1 != hashCodeUri2, isTrue);
+      },
+    );
   });
 }
