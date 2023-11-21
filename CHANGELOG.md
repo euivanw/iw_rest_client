@@ -1,4 +1,4 @@
-## 1.0.2
+## [Unreleased]
 
 - Improved classes documentation.
 
