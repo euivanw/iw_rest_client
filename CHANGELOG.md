@@ -1,3 +1,7 @@
+## 1.0.3
+
+- Improved project description.
+
 ## 1.0.2
 
 - Improved classes documentation.
