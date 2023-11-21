@@ -22,7 +22,10 @@ class RestUri {
 
   @override
   bool operator ==(covariant RestUri other) {
-    if (identical(this, other)) return true;
+    if (identical(this, other)) {
+      return true;
+    }
+
     final mapEquals = const DeepCollectionEquality().equals;
 
     return other.scheme == scheme &&
@@ -33,6 +36,9 @@ class RestUri {
 
   @override
   int get hashCode {
-    return scheme.hashCode ^ host.hashCode ^ path.hashCode ^ queryParameters.hashCode;
+    return scheme.hashCode ^
+        host.hashCode ^
+        path.hashCode ^
+        queryParameters.hashCode;
   }
 }

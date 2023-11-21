@@ -68,39 +68,44 @@ void main() {
         registerFallbackValue(mockGetUri);
       });
 
-      test('Should return a valid response when a GET request succeeds.', () async {
-        // Arrange
-        when(
-          () => mockHttpClient.get(
-            any(),
-            headers: any(named: 'headers'),
-          ),
-        ).thenAnswer(
-          (_) async => http.Response('This is the body', 200),
-        );
+      test(
+        'Should return a valid response when a GET request succeeds.',
+        () async {
+          // Arrange
+          when(
+            () => mockHttpClient.get(
+              any(),
+              headers: any(named: 'headers'),
+            ),
+          ).thenAnswer(
+            (_) async => http.Response('This is the body', 200),
+          );
 
-        // Act
-        final RestResponse response = await restClientService.fetch(
-          method: RestMethod.get,
-          uri: mockGetRestUri,
-          headers: mockHeaders,
-        );
-
-        // Asserts
-        expect(response.body, equals('This is the body'));
-        expect(response.statusCode, equals(RestStatus.ok));
-
-        verify(
-          () => mockHttpClient.get(
-            mockGetUri,
+          // Act
+          final RestResponse response = await restClientService.fetch(
+            method: RestMethod.get,
+            uri: mockGetRestUri,
             headers: mockHeaders,
-          ),
-        ).called(1);
+          );
 
-        verifyNoMoreInteractions(mockHttpClient);
-      });
+          // Asserts
+          expect(response.body, equals('This is the body'));
+          expect(response.statusCode, equals(RestStatus.ok));
 
-      test('Should return a RestException when a ClientException on a GET request happens.', () async {
+          verify(
+            () => mockHttpClient.get(
+              mockGetUri,
+              headers: mockHeaders,
+            ),
+          ).called(1);
+
+          verifyNoMoreInteractions(mockHttpClient);
+        },
+      );
+
+      test(
+          'Should return a RestException when a ClientException on a GET request happens.',
+          () async {
         // Arrange
         when(
           () => mockHttpClient.get(
@@ -131,7 +136,9 @@ void main() {
         verifyNoMoreInteractions(mockHttpClient);
       });
 
-      test('Should return a RestException when something bad on a GET request happens.', () async {
+      test(
+          'Should return a RestException when something bad on a GET request happens.',
+          () async {
         // Arrange
         when(
           () => mockHttpClient.get(
@@ -187,7 +194,8 @@ void main() {
         registerFallbackValue(mockPostUri);
       });
 
-      test('Should return a valid response when a POST request succeeds.', () async {
+      test('Should return a valid response when a POST request succeeds.',
+          () async {
         // Arrange
         when(
           () => mockHttpClient.post(
@@ -225,7 +233,9 @@ void main() {
         verifyNoMoreInteractions(mockHttpClient);
       });
 
-      test('Should return a RestException when a ClientException on a POST request happens.', () async {
+      test(
+          'Should return a RestException when a ClientException on a POST request happens.',
+          () async {
         // Arrange
         when(
           () => mockHttpClient.post(
@@ -262,7 +272,9 @@ void main() {
         verifyNoMoreInteractions(mockHttpClient);
       });
 
-      test('Should return a RestException when something bad on a POST request happens.', () async {
+      test(
+          'Should return a RestException when something bad on a POST request happens.',
+          () async {
         // Arrange
         when(
           () => mockHttpClient.post(
@@ -325,7 +337,8 @@ void main() {
         registerFallbackValue(mockPutUri);
       });
 
-      test('Should return a valid response when a PUT request succeeds.', () async {
+      test('Should return a valid response when a PUT request succeeds.',
+          () async {
         // Arrange
         when(
           () => mockHttpClient.put(
@@ -363,7 +376,9 @@ void main() {
         verifyNoMoreInteractions(mockHttpClient);
       });
 
-      test('Should return a RestException when a ClientException on a PUT request happens.', () async {
+      test(
+          'Should return a RestException when a ClientException on a PUT request happens.',
+          () async {
         // Arrange
         when(
           () => mockHttpClient.put(
@@ -400,7 +415,9 @@ void main() {
         verifyNoMoreInteractions(mockHttpClient);
       });
 
-      test('Should return a RestException when something bad on a PUT request happens.', () async {
+      test(
+          'Should return a RestException when something bad on a PUT request happens.',
+          () async {
         // Arrange
         when(
           () => mockHttpClient.put(
@@ -460,7 +477,8 @@ void main() {
         registerFallbackValue(mockPatchUri);
       });
 
-      test('Should return a valid response when a PATCH request succeeds.', () async {
+      test('Should return a valid response when a PATCH request succeeds.',
+          () async {
         // Arrange
         when(
           () => mockHttpClient.patch(
@@ -498,7 +516,9 @@ void main() {
         verifyNoMoreInteractions(mockHttpClient);
       });
 
-      test('Should return a RestException when a ClientException on a PATCH request happens.', () async {
+      test(
+          'Should return a RestException when a ClientException on a PATCH request happens.',
+          () async {
         // Arrange
         when(
           () => mockHttpClient.patch(
@@ -535,7 +555,9 @@ void main() {
         verifyNoMoreInteractions(mockHttpClient);
       });
 
-      test('Should return a RestException when something bad on a PATCH request happens.', () async {
+      test(
+          'Should return a RestException when something bad on a PATCH request happens.',
+          () async {
         // Arrange
         when(
           () => mockHttpClient.patch(
@@ -590,99 +612,108 @@ void main() {
         registerFallbackValue(mockDeleteUri);
       });
 
-      test('Should return a valid response when a DELETE request succeeds.', () async {
-        // Arrange
-        when(
-          () => mockHttpClient.delete(
-            any(),
-            headers: any(named: 'headers'),
-          ),
-        ).thenAnswer(
-          (_) async => http.Response('This is the body', 200),
-        );
+      test(
+        'Should return a valid response when a DELETE request succeeds.',
+        () async {
+          // Arrange
+          when(
+            () => mockHttpClient.delete(
+              any(),
+              headers: any(named: 'headers'),
+            ),
+          ).thenAnswer(
+            (_) async => http.Response('This is the body', 200),
+          );
 
-        // Act
-        final RestResponse response = await restClientService.fetch(
-          method: RestMethod.delete,
-          uri: mockDeleteRestUri,
-          headers: mockHeaders,
-        );
-
-        // Asserts
-        expect(response.body, equals('This is the body'));
-        expect(response.statusCode, equals(RestStatus.ok));
-
-        verify(
-          () => mockHttpClient.delete(
-            mockDeleteUri,
-            headers: mockHeaders,
-          ),
-        ).called(1);
-
-        verifyNoMoreInteractions(mockHttpClient);
-      });
-
-      test('Should return a RestException when a ClientException on a DELETE request happens.', () async {
-        // Arrange
-        when(
-          () => mockHttpClient.delete(
-            any(),
-            headers: any(named: 'headers'),
-          ),
-        ).thenThrow(
-          http.ClientException('This is an error.'),
-        );
-
-        // Act/Asserts
-        expect(
-          () => restClientService.fetch(
+          // Act
+          final RestResponse response = await restClientService.fetch(
             method: RestMethod.delete,
             uri: mockDeleteRestUri,
             headers: mockHeaders,
-          ),
-          throwsA(isA<RestException>()),
-        );
+          );
 
-        verify(
-          () => mockHttpClient.delete(
-            mockDeleteUri,
-            headers: mockHeaders,
-          ),
-        ).called(1);
+          // Asserts
+          expect(response.body, equals('This is the body'));
+          expect(response.statusCode, equals(RestStatus.ok));
 
-        verifyNoMoreInteractions(mockHttpClient);
-      });
+          verify(
+            () => mockHttpClient.delete(
+              mockDeleteUri,
+              headers: mockHeaders,
+            ),
+          ).called(1);
 
-      test('Should return a RestException when something bad on a DELETE request happens.', () async {
-        // Arrange
-        when(
-          () => mockHttpClient.delete(
-            any(),
-            headers: any(named: 'headers'),
-          ),
-        ).thenThrow(
-          Exception('This is an error.'),
-        );
+          verifyNoMoreInteractions(mockHttpClient);
+        },
+      );
 
-        // Act/Asserts
-        expect(
-          () => restClientService.fetch(
-            method: RestMethod.delete,
-            uri: mockDeleteRestUri,
-            headers: mockHeaders,
-          ),
-          throwsA(isA<RestException>()),
-        );
+      test(
+        'Should return a RestException when a ClientException on a DELETE request happens.',
+        () async {
+          // Arrange
+          when(
+            () => mockHttpClient.delete(
+              any(),
+              headers: any(named: 'headers'),
+            ),
+          ).thenThrow(
+            http.ClientException('This is an error.'),
+          );
 
-        verify(
-          () => mockHttpClient.delete(
-            mockDeleteUri,
-            headers: mockHeaders,
-          ),
-        ).called(1);
+          // Act/Asserts
+          expect(
+            () => restClientService.fetch(
+              method: RestMethod.delete,
+              uri: mockDeleteRestUri,
+              headers: mockHeaders,
+            ),
+            throwsA(isA<RestException>()),
+          );
 
-        verifyNoMoreInteractions(mockHttpClient);
-      });
+          verify(
+            () => mockHttpClient.delete(
+              mockDeleteUri,
+              headers: mockHeaders,
+            ),
+          ).called(1);
+
+          verifyNoMoreInteractions(mockHttpClient);
+        },
+      );
+
+      test(
+        'Should return a RestException when something bad on a DELETE request happens.',
+        () async {
+          // Arrange
+          when(
+            () => mockHttpClient.delete(
+              any(),
+              headers: any(named: 'headers'),
+            ),
+          ).thenThrow(
+            Exception('This is an error.'),
+          );
+
+          // Act/Asserts
+          expect(
+            () => restClientService.fetch(
+              method: RestMethod.delete,
+              uri: mockDeleteRestUri,
+              headers: mockHeaders,
+            ),
+            throwsA(isA<RestException>()),
+          );
+
+          verify(
+            () => mockHttpClient.delete(
+              mockDeleteUri,
+              headers: mockHeaders,
+            ),
+          ).called(1);
+
+          verifyNoMoreInteractions(mockHttpClient);
+        },
+      );
     });
   });
 }

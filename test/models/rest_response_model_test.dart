@@ -49,61 +49,72 @@ void main() {
       expect(response1 == response2, isFalse);
     });
 
-    test('Should return the string representantion of a RestResponse object when toString() method is called.', () {
-      // Arrange
-      final RestResponse response = RestResponse(
-        body: 'This is the response body.',
-        statusCode: RestStatus.ok,
-      );
+    test(
+      'Should return the string representantion of a RestResponse object when toString() method is called.',
+      () {
+        // Arrange
+        final RestResponse response = RestResponse(
+          body: 'This is the response body.',
+          statusCode: RestStatus.ok,
+        );
 
-      // Act
-      final String responseString = response.toString();
+        // Act
+        final String responseString = response.toString();
 
-      // Asserts
-      expect(
-        responseString,
-        equals('RestResponse{body: This is the response body., statusCode: RestStatus.ok}'),
-      );
-    });
+        // Asserts
+        expect(
+          responseString,
+          equals(
+            'RestResponse{body: This is the response body., statusCode: RestStatus.ok}',
+          ),
+        );
+      },
+    );
 
-    test('Should return two equals hashcode when two RestResponse objets are equals.', () {
-      // Arrange
-      final RestResponse response1 = RestResponse(
-        body: 'This is the response body.',
-        statusCode: RestStatus.ok,
-      );
+    test(
+      'Should return two equals hashcode when two RestResponse objets are equals.',
+      () {
+        // Arrange
+        final RestResponse response1 = RestResponse(
+          body: 'This is the response body.',
+          statusCode: RestStatus.ok,
+        );
 
-      final RestResponse response2 = RestResponse(
-        body: 'This is the response body.',
-        statusCode: RestStatus.ok,
-      );
+        final RestResponse response2 = RestResponse(
+          body: 'This is the response body.',
+          statusCode: RestStatus.ok,
+        );
 
-      // Act
-      final int hashCodeException1 = response1.hashCode;
-      final int hashCodeException2 = response2.hashCode;
+        // Act
+        final int hashCodeException1 = response1.hashCode;
+        final int hashCodeException2 = response2.hashCode;
 
-      // Asserts
-      expect(hashCodeException1 == hashCodeException2, isTrue);
-    });
+        // Asserts
+        expect(hashCodeException1 == hashCodeException2, isTrue);
+      },
+    );
 
-    test('Should return two different hashcode when two RestResponse objets are different.', () {
-      // Arrange
-      final RestResponse response1 = RestResponse(
-        body: 'This is the response body.',
-        statusCode: RestStatus.ok,
-      );
+    test(
+      'Should return two different hashcode when two RestResponse objets are different.',
+      () {
+        // Arrange
+        final RestResponse response1 = RestResponse(
+          body: 'This is the response body.',
+          statusCode: RestStatus.ok,
+        );
 
-      final RestResponse response2 = RestResponse(
-        body: 'This is another response body.',
-        statusCode: RestStatus.created,
-      );
+        final RestResponse response2 = RestResponse(
+          body: 'This is another response body.',
+          statusCode: RestStatus.created,
+        );
 
-      // Act
-      final int hashCodeException1 = response1.hashCode;
-      final int hashCodeException2 = response2.hashCode;
+        // Act
+        final int hashCodeException1 = response1.hashCode;
+        final int hashCodeException2 = response2.hashCode;
 
-      // Asserts
-      expect(hashCodeException1 != hashCodeException2, isTrue);
-    });
+        // Asserts
+        expect(hashCodeException1 != hashCodeException2, isTrue);
+      },
+    );
   });
 }
