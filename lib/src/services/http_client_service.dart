@@ -1,6 +1,6 @@
 import 'dart:convert';
 
-import 'package:http/http.dart';
+import 'package:http/http.dart' as http;
 
 import '../exceptions/rest_exception.dart';
 import '../models/rest_method_enum.dart';
@@ -9,12 +9,21 @@ import '../models/rest_status_enum.dart';
 import '../models/rest_uri_model.dart';
 import 'rest_client_service.dart';
 
+/// This class implements de Dart http client encapsulates to a
+/// `RestClientService`.
+///
+/// You can instantiate this classe to make http requests using Dart http
+/// client.
+///
+/// You can pass a http.Client() instance when creates a new
+/// `HttpClientService` instance, or leve it null to the class generate an
+/// instance for you.
 final class HttpClientService implements RestClientService {
-  final Client _httpClient;
+  final http.Client _httpClient;
 
   HttpClientService({
-    Client? httpClient,
-  }) : _httpClient = httpClient ?? Client();
+    http.Client? httpClient,
+  }) : _httpClient = httpClient ?? http.Client();
 
   @override
   Future<RestResponse> fetch({
@@ -24,7 +33,7 @@ final class HttpClientService implements RestClientService {
     Object? body,
     Encoding? encoding,
   }) async {
-    Response? httpResponse;
+    http.Response? httpResponse;
     RestResponse? response;
     RestStatus? responseStatusCode;
 
@@ -85,7 +94,7 @@ final class HttpClientService implements RestClientService {
       );
 
       return response;
-    } on ClientException catch (error, stackTrace) {
+    } on http.ClientException catch (error, stackTrace) {
       throw RestException(
         errorMessage: error.message,
         method: method,
