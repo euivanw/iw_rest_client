@@ -6,6 +6,7 @@ void main() {
     final int mockContinue = 100;
     final int mockSwitchingProtocols = 101;
     final int mockProcessing = 102;
+    final int mockEarlyHints = 103;
     final int mockOk = 200;
     final int mockCreated = 201;
     final int mockAccepted = 202;
@@ -22,6 +23,7 @@ void main() {
     final int mockSeeOther = 303;
     final int mockNotModified = 304;
     final int mockUseProxy = 305;
+    final int mockUnused = 306;
     final int mockTemporaryRedirect = 307;
     final int mockPermanentRedirect = 308;
     final int mockBadRequest = 400;
@@ -42,10 +44,12 @@ void main() {
     final int mockUnsupportedMediaType = 415;
     final int mockRequestedRangeNotSatisfiable = 416;
     final int mockExpectationFailed = 417;
+    final int mockImATeapot = 418;
     final int mockMisdirectedRequest = 421;
     final int mockUnprocessableEntity = 422;
     final int mockLocked = 423;
     final int mockFailedDependency = 424;
+    final int mockTooEarly = 425;
     final int mockUpgradeRequired = 426;
     final int mockPreconditionRequired = 428;
     final int mockTooManyRequests = 429;
@@ -89,6 +93,14 @@ void main() {
 
         // Asserts
         expect(status.value, equals(mockProcessing));
+      });
+
+      test('Should return 103 when RestStatus is earlyHints.', () {
+        // Act
+        final RestStatus status = RestStatus.earlyHints;
+
+        // Asserts
+        expect(status.value, equals(mockEarlyHints));
       });
 
       test('Should return 200 when RestStatus is ok.', () {
@@ -220,6 +232,14 @@ void main() {
 
         // Asserts
         expect(status.value, equals(mockUseProxy));
+      });
+
+      test('Should return 306 when RestStatus is unused.', () {
+        // Act
+        final RestStatus status = RestStatus.unused;
+
+        // Asserts
+        expect(status.value, equals(mockUnused));
       });
 
       test('Should return 307 when RestStatus is temporaryRedirect.', () {
@@ -388,6 +408,14 @@ void main() {
         expect(status.value, equals(mockExpectationFailed));
       });
 
+      test('Should return 418 when RestStatus is imATeapot.', () {
+        // Act
+        final RestStatus status = RestStatus.imATeapot;
+
+        // Asserts
+        expect(status.value, equals(mockImATeapot));
+      });
+
       test('Should return 421 when RestStatus is misdirectedRequest.', () {
         // Act
         final RestStatus status = RestStatus.misdirectedRequest;
@@ -418,6 +446,14 @@ void main() {
 
         // Asserts
         expect(status.value, equals(mockFailedDependency));
+      });
+
+      test('Should return 425 when RestStatus is tooEarly.', () {
+        // Act
+        final RestStatus status = RestStatus.tooEarly;
+
+        // Asserts
+        expect(status.value, equals(mockTooEarly));
       });
 
       test('Should return 426 when RestStatus is upgradeRequired.', () {
@@ -636,6 +672,15 @@ void main() {
         expect(status, equals(RestStatus.processing));
       });
 
+      test('Should return earlyHints RestStatus when value is 103.', () {
+        // Act
+        final RestStatus? status = RestStatus.fromValue(mockEarlyHints);
+
+        // Asserts
+        expect(status, isNotNull);
+        expect(status, equals(RestStatus.earlyHints));
+      });
+
       test('Should return ok RestStatus when value is 200.', () {
         // Act
         final RestStatus? status = RestStatus.fromValue(mockOk);
@@ -782,6 +827,15 @@ void main() {
         // Asserts
         expect(status, isNotNull);
         expect(status, equals(RestStatus.useProxy));
+      });
+
+      test('Should return unused RestStatus when value is 306.', () {
+        // Act
+        final RestStatus? status = RestStatus.fromValue(mockUnused);
+
+        // Asserts
+        expect(status, isNotNull);
+        expect(status, equals(RestStatus.unused));
       });
 
       test('Should return temporaryRedirect RestStatus when value is 307.', () {
@@ -984,6 +1038,15 @@ void main() {
         expect(status, equals(RestStatus.expectationFailed));
       });
 
+      test('Should return imATeapot RestStatus when value is 418.', () {
+        // Act
+        final RestStatus? status = RestStatus.fromValue(mockImATeapot);
+
+        // Asserts
+        expect(status, isNotNull);
+        expect(status, equals(RestStatus.imATeapot));
+      });
+
       test(
         'Should return misdirectedRequest RestStatus when value is 421.',
         () {
@@ -1026,6 +1089,15 @@ void main() {
         // Asserts
         expect(status, isNotNull);
         expect(status, equals(RestStatus.failedDependency));
+      });
+
+      test('Should return tooEarly RestStatus when value is 425.', () {
+        // Act
+        final RestStatus? status = RestStatus.fromValue(mockTooEarly);
+
+        // Asserts
+        expect(status, isNotNull);
+        expect(status, equals(RestStatus.tooEarly));
       });
 
       test('Should return upgradeRequired RestStatus when value is 426.', () {
