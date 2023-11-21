@@ -8,6 +8,10 @@ For now, the package supports only Dart http client, however, other clients coul
 
 ## Usage
 
+Here is an example that make some requests using the supported http method and also the way to handle rest exceptions.
+
+You can also read the unit tests to see all the possibilities that the implementation supports.
+
 ```dart
 try {
     final RestClientService service = HttpClientService();
@@ -105,3 +109,6 @@ try {
     exit(2);
   }
 ```
+Feito com &hearts; por Ivan Wilhelm.
+
+Codificado no [Visual Studio Code](https://code.visualstudio.com) da [Microsoft](https://www.microsoft.com.br)

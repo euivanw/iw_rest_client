@@ -1,6 +1,9 @@
 ## [Unreleased]
 
 - Improved classes documentation.
+- Improved project description.
+- Improved code formating.
+- Improved README.
 
 ## 1.0.1
 
