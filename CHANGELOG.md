@@ -1,3 +1,8 @@
+## 1.0.4
+
+ - Updated `http` to 1.1.1 version.
+ - Improved GitHub Actions Workflows.
+ 
 ## 1.0.3
 
 - Improved project description.
