@@ -1,8 +1,13 @@
+## 1.0.5
+
+- Update `dart-sdk` to 3.2.1 version.
+- Added dart test with coverage in `Derry` scripts.
+
 ## 1.0.4
 
- - Updated `http` to 1.1.1 version.
- - Improved GitHub Actions Workflows.
- 
+- Updated `http` to 1.1.1 version.
+- Improved GitHub Actions Workflows.
+
 ## 1.0.3
 
 - Improved project description.

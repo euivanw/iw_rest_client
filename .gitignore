@@ -1,3 +1,4 @@
+.coverage/
 .dart_tool/
 .idea/
 .vscode/

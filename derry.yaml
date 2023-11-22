@@ -26,3 +26,10 @@ tests:
   - rm test/full_coverage_test.dart || false
   - rm -rf .coverage/ || false
   - echo "End [tests] task..."
+
+coverage:
+  - echo "Start [tests] task..."
+  - rm -rf .coverage/ || false
+  - dart pub global activate coverage || false
+  - dart pub global run coverage:test_with_coverage -o .coverage/
+  - echo "End [tests] task..."
