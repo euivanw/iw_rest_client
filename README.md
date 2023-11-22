@@ -13,7 +13,13 @@ Here is an example that make some requests using the supported http method and a
 You can also read the unit tests to see all the possibilities that the implementation supports.
 
 ```dart
-try {
+import 'dart:convert';
+import 'dart:io';
+
+import 'package:iw_rest_client/iw_rest_client.dart';
+
+Future<void> main() async {
+  try {
     final RestClientService service = HttpClientService();
 
     for (var method in RestMethod.values) {
@@ -108,6 +114,7 @@ try {
     print('Unhandled error [$error]');
     exit(2);
   }
+}
 ```
 Feito com &hearts; por Ivan Wilhelm.
 

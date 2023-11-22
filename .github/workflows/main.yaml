@@ -1,9 +1,8 @@
 name: "Release"
 
 on:
-  workflow_dispatch:
   push:
-    branches: 
+    branches:
       - "main"
 
 jobs:
@@ -17,6 +16,5 @@ jobs:
 
   version:
     name: "Version"
-    needs: [ analyzer, tests ]
+    needs: [analyzer, tests]
     uses: ./.github/workflows/version.yaml
-

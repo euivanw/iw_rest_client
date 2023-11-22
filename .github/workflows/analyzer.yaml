@@ -7,8 +7,8 @@ jobs:
   analyzer:
     strategy:
       matrix:
-        sdk: [ 3.2.0, 3.1.5, 3.0.7 ]
-        os: [ ubuntu-latest, windows-latest, macos-latest ]
+        sdk: [3.2.0, 3.1.5, 3.0.7]
+        os: [ubuntu-latest, windows-latest, macos-latest]
 
     name: "Code Analyzer"
     runs-on: ${{ matrix.os }}
