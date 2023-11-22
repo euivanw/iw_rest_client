@@ -1,6 +1,6 @@
 name: iw_rest_client
 description: This project is an implementation that allow developers to encapsulate their own usage of a http client.
-version: 1.0.4
+version: 1.0.5
 repository: https://github.com/euivanw/iw_rest_client
 
 topics:
