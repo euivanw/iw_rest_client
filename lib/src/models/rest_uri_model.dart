@@ -35,7 +35,7 @@ class RestUri {
   /// RestUri toString method.
   @override
   String toString() {
-    return 'RestUri{scheme: $scheme, host: $host, path: $path, queryParameters: $queryParameters}';
+    return 'RestUri(scheme: ${scheme.value}, host: $host, path: $path, queryParameters: $queryParameters)';
   }
 
   /// RestUri equals operator method.

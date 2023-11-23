@@ -5,7 +5,7 @@ void main() {
   group('RestException', () {
     final String mockErrorMessage = 'This is an exception';
 
-    final RestMethod mockVerb = RestMethod.get;
+    final RestMethod mockRequestMethod = RestMethod.get;
 
     final Map<String, String> mockHeaders = {
       'Content-Type': 'application/json',
@@ -24,6 +24,8 @@ void main() {
     };
 
     final RestResponse mockResponseBody = RestResponse(
+      requestUri: mockRestUri,
+      requestMethod: mockRequestMethod,
       body: 'This is the body.',
       statusCode: RestStatus.ok,
     );
@@ -39,7 +41,7 @@ void main() {
         // Act
         final RestException exception = RestException(
           errorMessage: mockErrorMessage,
-          method: mockVerb,
+          method: mockRequestMethod,
           uri: mockRestUri,
         );
 
@@ -48,7 +50,7 @@ void main() {
         expect(exception.errorMessage, isNotEmpty);
         expect(exception.errorMessage, equals(mockErrorMessage));
         expect(exception.method, isNotNull);
-        expect(exception.method, equals(mockVerb));
+        expect(exception.method, equals(mockRequestMethod));
         expect(exception.uri, isNotNull);
         expect(exception.headers, isNull);
         expect(exception.requestBody, isNull);
@@ -64,7 +66,7 @@ void main() {
         // Act
         final RestException exception = RestException(
           errorMessage: mockErrorMessage,
-          method: mockVerb,
+          method: mockRequestMethod,
           headers: mockHeaders,
           uri: mockRestUri,
         );
@@ -74,7 +76,7 @@ void main() {
         expect(exception.errorMessage, isNotEmpty);
         expect(exception.errorMessage, equals(mockErrorMessage));
         expect(exception.method, isNotNull);
-        expect(exception.method, equals(mockVerb));
+        expect(exception.method, equals(mockRequestMethod));
         expect(exception.headers, isNotNull);
         expect(exception.headers, isNotEmpty);
         expect(exception.headers, equals(mockHeaders));
@@ -93,7 +95,7 @@ void main() {
         // Act
         final RestException exception = RestException(
           errorMessage: mockErrorMessage,
-          method: mockVerb,
+          method: mockRequestMethod,
           uri: mockRestUri,
           headers: mockHeaders,
           requestBody: mockRequestBody,
@@ -104,7 +106,7 @@ void main() {
         expect(exception.errorMessage, isNotEmpty);
         expect(exception.errorMessage, equals(mockErrorMessage));
         expect(exception.method, isNotNull);
-        expect(exception.method, equals(mockVerb));
+        expect(exception.method, equals(mockRequestMethod));
         expect(exception.headers, isNotNull);
         expect(exception.headers, isNotEmpty);
         expect(exception.headers, equals(mockHeaders));
@@ -125,7 +127,7 @@ void main() {
         // Act
         final RestException exception = RestException(
           errorMessage: mockErrorMessage,
-          method: mockVerb,
+          method: mockRequestMethod,
           uri: mockRestUri,
           headers: mockHeaders,
           requestBody: mockRequestBody,
@@ -137,7 +139,7 @@ void main() {
         expect(exception.errorMessage, isNotEmpty);
         expect(exception.errorMessage, equals(mockErrorMessage));
         expect(exception.method, isNotNull);
-        expect(exception.method, equals(mockVerb));
+        expect(exception.method, equals(mockRequestMethod));
         expect(exception.headers, isNotNull);
         expect(exception.headers, isNotEmpty);
         expect(exception.headers, equals(mockHeaders));
@@ -159,7 +161,7 @@ void main() {
         // Act
         final RestException exception = RestException(
           errorMessage: mockErrorMessage,
-          method: mockVerb,
+          method: mockRequestMethod,
           uri: mockRestUri,
           headers: mockHeaders,
           requestBody: mockRequestBody,
@@ -172,7 +174,7 @@ void main() {
         expect(exception.errorMessage, isNotEmpty);
         expect(exception.errorMessage, equals(mockErrorMessage));
         expect(exception.method, isNotNull);
-        expect(exception.method, equals(mockVerb));
+        expect(exception.method, equals(mockRequestMethod));
         expect(exception.headers, isNotNull);
         expect(exception.headers, isNotEmpty);
         expect(exception.headers, equals(mockHeaders));
@@ -195,7 +197,7 @@ void main() {
         // Act
         final RestException exception = RestException(
           errorMessage: mockErrorMessage,
-          method: mockVerb,
+          method: mockRequestMethod,
           uri: mockRestUri,
           headers: mockHeaders,
           requestBody: mockRequestBody,
@@ -209,7 +211,7 @@ void main() {
         expect(exception.errorMessage, isNotEmpty);
         expect(exception.errorMessage, equals(mockErrorMessage));
         expect(exception.method, isNotNull);
-        expect(exception.method, equals(mockVerb));
+        expect(exception.method, equals(mockRequestMethod));
         expect(exception.headers, isNotNull);
         expect(exception.headers, isNotEmpty);
         expect(exception.headers, equals(mockHeaders));
@@ -305,7 +307,7 @@ void main() {
         expect(
           exceptionString,
           equals(
-            'RestException{errorMessage: This is an error., method: RestMethod.delete, uri: RestUri{scheme: RestScheme.https, host: ivanwilhelm.dev, path: /posts, queryParameters: null}, headers: null, requestBody: null, responseStatusCode: null, responseBody: null, stackTrace: This is the stacktrace.}',
+            'RestException(errorMessage: This is an error., method: DELETE, uri: RestUri(scheme: https, host: ivanwilhelm.dev, path: /posts, queryParameters: null), headers: null, requestBody: null, responseStatusCode: null, responseBody: null, stackTrace: This is the stacktrace.)',
           ),
         );
       },

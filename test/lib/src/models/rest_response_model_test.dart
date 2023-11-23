@@ -1,5 +1,4 @@
-import 'package:iw_rest_client/src/models/rest_response_model.dart';
-import 'package:iw_rest_client/src/models/rest_status_enum.dart';
+import 'package:iw_rest_client/iw_rest_client.dart';
 import 'package:test/test.dart';
 
 void main() {
@@ -7,11 +6,30 @@ void main() {
     test('Should return a RestResponse.', () {
       // Act
       final RestResponse response = RestResponse(
+        requestMethod: RestMethod.get,
+        requestUri: RestUri(
+          scheme: RestScheme.https,
+          host: 'localhost',
+          path: '/',
+        ),
         body: 'This is the body',
         statusCode: RestStatus.ok,
       );
 
       // Asserts
+      expect(response.requestMethod, isNotNull);
+      expect(response.requestMethod, equals(RestMethod.get));
+      expect(response.requestUri, isNotNull);
+      expect(
+        response.requestUri,
+        equals(
+          RestUri(
+            scheme: RestScheme.https,
+            host: 'localhost',
+            path: '/',
+          ),
+        ),
+      );
       expect(response.body, isNotEmpty);
       expect(response.body, equals('This is the body'));
       expect(response.statusCode, equals(RestStatus.ok));
@@ -20,11 +38,23 @@ void main() {
     test('Should return TRUE when two RestResponse objets are equals.', () {
       // Act
       final RestResponse response1 = RestResponse(
+        requestMethod: RestMethod.get,
+        requestUri: RestUri(
+          scheme: RestScheme.https,
+          host: 'localhost',
+          path: '/',
+        ),
         body: 'This is the response body.',
         statusCode: RestStatus.ok,
       );
 
       final RestResponse response2 = RestResponse(
+        requestMethod: RestMethod.get,
+        requestUri: RestUri(
+          scheme: RestScheme.https,
+          host: 'localhost',
+          path: '/',
+        ),
         body: 'This is the response body.',
         statusCode: RestStatus.ok,
       );
@@ -36,11 +66,23 @@ void main() {
     test('Should return FALSE when two RestResponse objets are different.', () {
       // Act
       final RestResponse response1 = RestResponse(
+        requestMethod: RestMethod.get,
+        requestUri: RestUri(
+          scheme: RestScheme.https,
+          host: 'localhost',
+          path: '/',
+        ),
         body: 'This is the response body.',
         statusCode: RestStatus.ok,
       );
 
       final RestResponse response2 = RestResponse(
+        requestMethod: RestMethod.get,
+        requestUri: RestUri(
+          scheme: RestScheme.https,
+          host: 'localhost',
+          path: '/',
+        ),
         body: 'This is another response body.',
         statusCode: RestStatus.created,
       );
@@ -54,6 +96,12 @@ void main() {
       () {
         // Arrange
         final RestResponse response = RestResponse(
+          requestMethod: RestMethod.get,
+          requestUri: RestUri(
+            scheme: RestScheme.https,
+            host: 'localhost',
+            path: '/',
+          ),
           body: 'This is the response body.',
           statusCode: RestStatus.ok,
         );
@@ -65,7 +113,7 @@ void main() {
         expect(
           responseString,
           equals(
-            'RestResponse{body: This is the response body., statusCode: RestStatus.ok}',
+            'RestResponse(requestMethod: GET, requestUri: RestUri(scheme: https, host: localhost, path: /, queryParameters: null), body: This is the response body., statusCode: RestStatus.ok)',
           ),
         );
       },
@@ -76,11 +124,23 @@ void main() {
       () {
         // Arrange
         final RestResponse response1 = RestResponse(
+          requestMethod: RestMethod.get,
+          requestUri: RestUri(
+            scheme: RestScheme.https,
+            host: 'localhost',
+            path: '/',
+          ),
           body: 'This is the response body.',
           statusCode: RestStatus.ok,
         );
 
         final RestResponse response2 = RestResponse(
+          requestMethod: RestMethod.get,
+          requestUri: RestUri(
+            scheme: RestScheme.https,
+            host: 'localhost',
+            path: '/',
+          ),
           body: 'This is the response body.',
           statusCode: RestStatus.ok,
         );
@@ -99,11 +159,23 @@ void main() {
       () {
         // Arrange
         final RestResponse response1 = RestResponse(
+          requestMethod: RestMethod.get,
+          requestUri: RestUri(
+            scheme: RestScheme.https,
+            host: 'localhost',
+            path: '/',
+          ),
           body: 'This is the response body.',
           statusCode: RestStatus.ok,
         );
 
         final RestResponse response2 = RestResponse(
+          requestMethod: RestMethod.get,
+          requestUri: RestUri(
+            scheme: RestScheme.https,
+            host: 'localhost',
+            path: '/',
+          ),
           body: 'This is another response body.',
           statusCode: RestStatus.created,
         );

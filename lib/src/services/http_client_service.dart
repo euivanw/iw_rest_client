@@ -89,6 +89,8 @@ final class HttpClientService implements RestClientService {
       responseStatusCode = RestStatus.fromValue(httpResponse.statusCode);
 
       response = RestResponse(
+        requestMethod: method,
+        requestUri: uri,
         body: httpResponse.body,
         statusCode: responseStatusCode!,
       );

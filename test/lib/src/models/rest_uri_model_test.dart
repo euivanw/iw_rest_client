@@ -105,7 +105,7 @@ void main() {
         expect(
           uriString,
           equals(
-            'RestUri{scheme: RestScheme.https, host: ivanwilhelm.dev, path: /posts, queryParameters: {code: 1}}',
+            'RestUri(scheme: https, host: ivanwilhelm.dev, path: /posts, queryParameters: {code: 1})',
           ),
         );
       },
