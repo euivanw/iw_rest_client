@@ -55,7 +55,7 @@ class RestException implements Exception {
   /// RestException toString method.
   @override
   String toString() {
-    return 'RestException{errorMessage: $errorMessage, method: $method, uri: $uri, headers: $headers, requestBody: $requestBody, responseStatusCode: $responseStatusCode, responseBody: $responseBody, stackTrace: $stackTrace}';
+    return 'RestException(errorMessage: $errorMessage, method: ${method.value}, uri: $uri, headers: $headers, requestBody: $requestBody, responseStatusCode: $responseStatusCode, responseBody: $responseBody, stackTrace: $stackTrace)';
   }
 
   /// RestException equals operator method.
