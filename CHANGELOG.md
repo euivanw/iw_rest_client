@@ -1,3 +1,8 @@
+## 1.1.1
+
+- Updated `http` to 1.1.2 version.
+- Update `dart-sdk` to 3.2.2 version.
+
 ## 1.1.0
 
 - Added request uri and method to the request `RestResponse` object.
